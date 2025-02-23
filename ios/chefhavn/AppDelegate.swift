@@ -2,13 +2,14 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import GoogleMaps
 
 @main
 class AppDelegate: RCTAppDelegate {
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     self.moduleName = "chefhavn"
     self.dependencyProvider = RCTAppDependencyProvider()
-
+    GMSServices.provideAPIKey("AIzaSyD0Svh7_EkCQypWAEn8aT6aWrYmwetPqgA")
     // You can add your custom initial props in the dictionary below.
     // They will be passed down to the ViewController used by React Native.
     self.initialProps = [:]
