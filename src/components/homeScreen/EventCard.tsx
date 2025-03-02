@@ -1,7 +1,7 @@
 import {Colors} from '@utils/Constants';
+import { navigate } from '@utils/NavigationUtils';
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
 
 export const EventCard = ({
   imagePath,
@@ -10,14 +10,15 @@ export const EventCard = ({
   discountText,
   description,
   details,
+  imagePathUrl
 }) => {
-  // const navigation = useNavigation();
-  // const handleCardPress = () => {
-  //     navigation.navigate('EventDetails', { title, imagePath, description, details });
-  // };
+
+  const handleCardPress = () => {
+      navigate('EventDetails', { title, imagePath, description, details });
+  };
 
   return (
-    <TouchableOpacity style={styles.card} onPress={() => {}}>
+    <TouchableOpacity style={styles.card} onPress={handleCardPress}>
       <Image source={imagePath} style={styles.cardImage} />
       {discountText && (
         <View style={styles.discountBadge}>

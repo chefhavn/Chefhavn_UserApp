@@ -74,3 +74,71 @@ export const getUserById = async (): Promise<any> => {
   }
 };
 
+// API For Create Booking
+export const createBooking = async (
+  customerId,
+  eventType,
+  cookType,
+  bookingDuration,
+  noOfPeople,
+  noOfDishes,
+  cuisineType,
+  price,
+  selectedDate,
+  selectedTime,
+  location,
+  addressId,
+  paymentData
+) => {
+  const payload = {
+    customer_id: customerId,
+    event_type: eventType,
+    cook_type: cookType,
+    booking_duration: bookingDuration,
+    no_of_people: noOfPeople,
+    no_of_dishes: noOfDishes,
+    cuisine_type: cuisineType,
+    price: price,
+    date: selectedDate,
+    time: selectedTime,
+    location,
+    addressId,
+    paymentData
+  };
+
+  console.log("Payment DATA",paymentData)
+
+  try {
+    const response = await axiosInstance.post(
+      '/api/booking/create-booking',
+      payload,
+    );
+    return response.data; // Return only the data from the response
+  } catch (error) {
+    console.error('Error during booking creation:', error);
+    throw error; // Rethrow to be caught in the caller function
+  }
+};
+
+export const getBookingsByUserId = async (customerId) => {
+  try {
+    const response = await axiosInstance.get(
+      `/api/booking/bookings/${customerId}`,
+    );
+    return response;
+  } catch (error) {
+    console.error('Error fetching bookings:', error);
+    throw error;
+  }
+};
+
+export const getBookingById = async (orderId) => {
+  try {
+    const response = await axiosInstance.get(`/api/booking/booking/${orderId}`);
+    console.log("Booking Details",response)
+    return response;
+  } catch (error) {
+    console.error('Error fetching booking:', error);
+    throw error;
+  }
+};

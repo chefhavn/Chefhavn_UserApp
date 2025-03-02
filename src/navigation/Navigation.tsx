@@ -7,6 +7,12 @@ import CustomerLogin from '@features/auth/CustomerLogin';
 import GettingStarted from '@features/auth/GettingStarted';
 import OtpScreen from '@features/auth/OtpScreen';
 import HomeScreen from '@features/home/HomeScreen';
+import EventDetails from '@features/events/EventDetails';
+import CheckoutScreen from '@features/events/CheckoutScreen';
+import SuccessOrderScreen from '@features/events/SuccessOrderScreen';
+import HelpScreen from '@features/profile/HelpScreen';
+import MyOrderScreen from '@features/orders/MyOrderScreen';
+import ViewOrderScreen from '@features/orders/ViewOrderScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +52,48 @@ const Navigation: FC = () => {
           }}
           name="HomeScreen"
           component={HomeScreen}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="EventDetails"
+          component={EventDetails}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="CheckoutScreen"
+          component={CheckoutScreen}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="SuccessOrderScreen"
+          component={SuccessOrderScreen}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="MyOrderScreen"
+          component={MyOrderScreen}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="ViewOrderScreen"
+          component={ViewOrderScreen}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="HelpScreen"
+          component={HelpScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -15,10 +15,13 @@ import {navigate} from '@utils/NavigationUtils';
 import Geolocation from '@react-native-community/geolocation';
 import CustomSafeAreaView from '@components/global/CustomSafeAreaView';
 import Header from '@components/homeScreen/Header';
-import {Colors} from '@utils/Constants';
+import {Colors, Fonts} from '@utils/Constants';
 import WelcomeText from '@components/homeScreen/WelcomeText';
 import Promotion from '@components/homeScreen/Promotion';
 import {EventCard} from '@components/homeScreen/EventCard';
+import CustomText from '@components/ui/CustomText';
+import {RFValue} from 'react-native-responsive-fontsize';
+import CustomFooter from '@components/global/CustomFooter';
 
 const HomeScreen = () => {
   const {user, logout} = useAuthStore();
@@ -113,19 +116,20 @@ const HomeScreen = () => {
   };
 
   return (
-    <CustomSafeAreaView
-      style={{flex: 1, backgroundColor: Colors.primary_light}}>
-      <ScrollView>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={Colors.primary_light}
-        />
-        <Header address={address} handleLogout={handleLogout} />
+    <>
+      <CustomSafeAreaView
+        style={{flex: 1, backgroundColor: Colors.primary_light}}>
+        <ScrollView>
+          <StatusBar
+            barStyle="dark-content"
+            backgroundColor={Colors.primary_light}
+          />
+          <Header address={address} handleLogout={handleLogout} />
 
-        <View style={styles.content}>
-          <WelcomeText message={`Welcome, ${user?.name || 'Guest'}`} />
+          <View style={styles.content}>
+            <WelcomeText message={`Welcome, ${user?.name || 'Guest'}`} />
 
-          <Promotion />
+            <Promotion />
 
             <View style={styles.sectionHeaderServices}>
               <View style={styles.line} />
@@ -135,6 +139,7 @@ const HomeScreen = () => {
 
             {EventCard({
               imagePath: require('../../assets/slider/basic-event.jpeg'),
+              imagePathUrl: '../../assets/slider/basic-event.jpeg',
               title: 'Basic Event',
               subtitle: 'Up to 10 people',
               discountText: 'Content Offer #1',
@@ -145,6 +150,7 @@ const HomeScreen = () => {
 
             {EventCard({
               imagePath: require('../../assets/slider/large-event.jpeg'),
+              imagePathUrl: '../../assets/slider/large-event.jpeg',
               title: 'Large Event',
               subtitle: 'More than 10 and Upto 25 people',
               discountText: 'Content Offer #2',
@@ -152,9 +158,32 @@ const HomeScreen = () => {
               details:
                 'Host a cozy game night with board games, snacks, and laughter for 25 friends at your place!',
             })}
-        </View>
-      </ScrollView>
-    </CustomSafeAreaView>
+          </View>
+
+          <View
+            style={{backgroundColor: '#f8f8f8', padding: 20, paddingBottom: 0}}>
+            <CustomText
+              fontSize={RFValue(24)}
+              fontFamily={Fonts.Bold}
+              style={{opacity: 0.2}}>
+              ChefHavn
+            </CustomText>
+            <CustomText
+              fontSize={RFValue(18)}
+              fontFamily={Fonts.Bold}
+              style={{opacity: 0.2}}>
+              Your Event, Our Chef
+            </CustomText>
+            <CustomText
+              fontFamily={Fonts.Bold}
+              style={{marginTop: 10, paddingBottom: 100, opacity: 0.2}}>
+              Developed By ❤️ ChefHavn
+            </CustomText>
+          </View>
+        </ScrollView>
+      <CustomFooter />
+      </CustomSafeAreaView>
+    </>
   );
 };
 
