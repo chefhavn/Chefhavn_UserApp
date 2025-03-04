@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import {Colors, Fonts} from '@utils/Constants';
 import CustomText from '@components/ui/CustomText';
+import { navigate } from '@utils/NavigationUtils';
 
 // Define the interface for props
 interface HeaderProps {
@@ -49,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({address, handleLogout}) => {
             style={styles.locationIcon}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => {navigate("SelectLocation")}}>
           <CustomText fontFamily={Fonts.Bold} style={styles.locationText}>
             {primary}
           </CustomText>

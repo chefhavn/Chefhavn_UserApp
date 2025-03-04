@@ -32,7 +32,7 @@ const CustomFooter = () => {
     {
       name: 'Profile',
       icon: require('@assets/auth/profile.png'),
-      onPress: () => navigation.navigate('HomeScreen'),
+      onPress: () => navigation.navigate('ProfileScreen'),
     },
   ];
 

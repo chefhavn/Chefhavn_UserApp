@@ -13,6 +13,9 @@ import SuccessOrderScreen from '@features/events/SuccessOrderScreen';
 import HelpScreen from '@features/profile/HelpScreen';
 import MyOrderScreen from '@features/orders/MyOrderScreen';
 import ViewOrderScreen from '@features/orders/ViewOrderScreen';
+import ProfileScreen from '@features/profile/ProfileScreen';
+import SelectLocation from '@features/map/SelectLocation';
+import MapScreen from '@features/map/MapScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -94,6 +97,27 @@ const Navigation: FC = () => {
           }}
           name="HelpScreen"
           component={HelpScreen}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="ProfileScreen"
+          component={ProfileScreen}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="SelectLocation"
+          component={SelectLocation}
+        />
+        <Stack.Screen
+          options={{
+            animation: 'slide_from_right',
+          }}
+          name="MapScreen"
+          component={MapScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

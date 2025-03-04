@@ -35,6 +35,20 @@ export const login = async (
   }
 };
 
+// Delete Account
+export const deleteAccount = async (userId) => {
+  try {
+    const response = await axiosInstance.delete('/api/auth/delete-account', {
+      data: { userId }
+    });
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error('Error during account deletion:', error);
+    throw error;
+  }
+};
+
 // API method for sending OTP
 export const sendOtp = async (
   email: string,
@@ -139,6 +153,49 @@ export const getBookingById = async (orderId) => {
     return response;
   } catch (error) {
     console.error('Error fetching booking:', error);
+    throw error;
+  }
+};
+
+// API method for fetching all addresses
+export const fetchAllAddresses = async userId => {
+  try {
+    const response = await axiosInstance.get(
+      `/api/address/get-all-addresses/${userId}`,
+    );
+    return response;
+  } catch (error) {
+    console.error('Error during fetching addresses:', error);
+    throw error;
+  }
+};
+
+// API method for deleting an address
+export const deleteAddress = async addressId => {
+  try {
+    const response = await axiosInstance.delete(
+      `/api/address/delete-address/${addressId}`,
+    );
+    return response;
+  } catch (error) {
+    console.error('Error deleting address:', error);
+    throw error;
+  }
+};
+
+// API method for setting primary address
+export const setPrimaryAddress = async (userId, addressId) => {
+  try {
+    const response = await axiosInstance.post(
+      '/api/address/set-active-address',
+      {
+        user_id: userId,
+        address_id: addressId,
+      },
+    );
+    return response;
+  } catch (error) {
+    console.error('Error setting primary address:', error);
     throw error;
   }
 };
